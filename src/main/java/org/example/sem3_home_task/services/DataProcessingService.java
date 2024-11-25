@@ -1,6 +1,8 @@
 package org.example.sem3_home_task.services;
 
 import org.example.sem3_home_task.domain.User;
+import org.example.sem3_home_task.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class DataProcessingService {
-    public List<User> sortUsersByAge(List<User> users, int age){
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public List<User> sortUsersByAge(List<User> users){
         return users.stream()
                 .sorted(Comparator.comparing(User::getAge))
                 .collect(Collectors.toList());
@@ -27,5 +37,9 @@ public class DataProcessingService {
                 .mapToInt(User::getAge)
                 .average()
                 .orElse(0);
+    }
+
+    public void addUserToList(User user){
+        userRepository.getUsers().add(user);
     }
 }
