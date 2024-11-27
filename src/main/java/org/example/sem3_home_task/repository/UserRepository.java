@@ -6,14 +6,29 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс репозиторий хранения пользователей
+ */
 @Repository
 public class UserRepository {
+
+    /**
+     * Поле список пользователей для хранения пользователей
+     */
     private List<User> users = new ArrayList<>();
 
+    /**
+     * Геттер возвращающий список пользователей
+     * @return список пользователей
+     */
     public List<User> getUsers() {
         return users;
     }
 
+    /**
+     * Сеттер метод установки списка пользователей
+     * @param users список пользователей
+     */
     public void setUsers(List<User> users) {
         this.users = users;
     }
