@@ -1,6 +1,7 @@
 package org.example.sem3_home_task.services;
 
 import org.example.sem3_home_task.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +12,13 @@ public class UserService {
     /**
      * Поле сервиса уведомлений
      */
+    @Autowired
     private NotificationService notificationService;
+
+    /**
+     * Поле сервиса регистрации
+     */
+    private RegistrationService registrationService;
 
     /**
      * Конструктор сервиса пользователя с подключением зависимости (внедрение зависимостей)
@@ -36,7 +43,6 @@ public class UserService {
 
         // Отправляем уведомление о создании нового пользователя
         notificationService.notifyUser(user);
-
         return user;
     }
 }

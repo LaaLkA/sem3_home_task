@@ -26,7 +26,7 @@ public class UserRepository {
     }
 
     /**
-     * Сеттер метод установки списка пользователей
+     * Метод изменения списка пользователей
      * @param users список пользователей
      */
     public void setUsers(List<User> users) {
